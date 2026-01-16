@@ -89,6 +89,17 @@ void initGraph(GridGraph& graph)
      */
 
     //BEGIN STUDENT CODE
+    graph.visited_cells.clear();
+    int n = graph.width * graph.height;
+    std::vector<CellNode> temp;
+    for (int i = 0; i < n; i++) {
+        CellNode c;
+        c.parent = -1;
+        c.dist = HIGH;
+        c.visited = false;
+        temp.push_back(c);
+    }
+    graph.nodes = temp;
     //END STUDENT CODE
     return;
 }
@@ -164,6 +175,47 @@ std::vector<int> findNeighbors(int idx, const GridGraph& graph)
      */
 
     //BEGIN STUDENT CODE
+    Cell c = idxToCell(idx, graph);
+
+    if (isCellInBounds(c.i-1, c.j-1, graph))
+    {
+        neighbors.push_back(cellToIdx(c.i-1, c.j-1, graph));
+    }
+
+    if (isCellInBounds(c.i-1, c.j, graph))
+    {
+        neighbors.push_back(cellToIdx(c.i-1, c.j, graph));
+    }
+
+    if (isCellInBounds(c.i-1, c.j+1, graph))
+    {
+        neighbors.push_back(cellToIdx(c.i-1, c.j+1, graph));
+    }
+
+    if (isCellInBounds(c.i, c.j-1, graph))
+    {
+        neighbors.push_back(cellToIdx(c.i, c.j-1, graph));
+    }
+
+    if (isCellInBounds(c.i, c.j+1, graph))
+    {
+        neighbors.push_back(cellToIdx(c.i, c.j+1, graph));
+    }
+
+    if (isCellInBounds(c.i+1, c.j-1, graph))
+    {
+        neighbors.push_back(cellToIdx(c.i+1, c.j-1, graph));
+    }
+
+    if (isCellInBounds(c.i+1, c.j, graph))
+    {
+        neighbors.push_back(cellToIdx(c.i+1, c.j, graph));
+    }
+
+    if (isCellInBounds(c.i+1, c.j+1, graph))
+    {
+        neighbors.push_back(cellToIdx(c.i+1, c.j+1, graph));
+    }
     //END STUDENT CODE
     return neighbors;
 }   
@@ -219,10 +271,11 @@ int getParent(int idx, const GridGraph& graph)
      */
     
     //BEGIN STUDENT CODE
+    int dad = graph.nodes[idx].parent;
     //END STUDENT CODE
 
     //replace this with the proper code
-    return -1;
+    return dad;
 }
 
 
@@ -233,10 +286,11 @@ float getScore(int idx, const GridGraph& graph)
      */
 
     // BEGIN STUDENT CODE
+    float score = graph.nodes[idx].fscore;
     // END STUDENT CODE
     
     //replace this with the proper code
-    return HIGH;
+    return score;
 }
 
 
