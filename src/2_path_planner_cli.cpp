@@ -84,6 +84,5 @@ int main(int argv, char **argc)
     std::cout << "Found path of length: " << path.size() << "\n";
 
     // Generate the planning file for visualization in the nav app.
-    generatePlanFile(start, goal, path, graph, planning_algo);
-
+    generatePlanFile(start, goal, path, graph, planning_algo); 
 }
