@@ -271,5 +271,5 @@ std::vector<Cell> aStarSearch(GridGraph &graph, const Cell &start, const Cell &g
     }
     /* END STUDENT CODE. */
 
-    return path;
+    return path; 
 }
