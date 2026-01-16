@@ -1,9 +1,3 @@
-#include <iostream>
-#include <cmath>
-#include <string>
-
-#include <mbot_bridge/robot.h>
-
 #include <path_planning/utils/graph_utils.h>
 #include <path_planning/utils/math_helpers.h>
 #include <path_planning/utils/viz_utils.h>
@@ -36,7 +30,7 @@ int main(int argc, char const *argv[])
     GridGraph graph;
     loadFromFile(map_file, graph);
     //distanceTransformManhattan(graph);
-    graph.collision_radius = 0.25;
+    graph.collision_radius = 0.1;
 
     Cell goal = posToCell(goal_x, goal_y, graph);
 
